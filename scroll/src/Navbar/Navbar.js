@@ -1,5 +1,12 @@
 import React, { useState } from "react";
+import DynamicHome from "./DynamicNavbarLinks/DynamicHome";
+import DynamicAbout from "./DynamicNavbarLinks/DynamicAbout";
+import DynamicProjects from "./DynamicNavbarLinks/DynamicProjects";
+import DynamicContact from "./DynamicNavbarLinks/DynamicContact";
+import DynamicFrancais from "./DynamicNavbarLinks/DynamicFrancais";
+import DynamicEnglish from "./DynamicNavbarLinks/DynamicEnglish";
 import {
+  StyledHam,
   NavbarContainer,
   OpenLinksButton,
   NavbarInnerContainer,
@@ -25,21 +32,29 @@ const Navbar = () => {
             setExtendNavbar((current) => !current);
           }}
         >
-          {extendNavbar ? <>&#10005;</> : <> &#8801;</>}
+          {extendNavbar ? <>&#10005;</> : <StyledHam> &#8801;</StyledHam>}
         </OpenLinksButton>
       </NavbarInnerContainer>
       {extendNavbar && (
         <NavbarExtendedContainer>
-          <NavbarLinkExtendedOne to="/home">
-            Home
+          <NavbarLinkExtendedOne>
+            <DynamicHome to="/home" />
           </NavbarLinkExtendedOne>
-          <NavbarLinkExtendedTwo to="/about">About</NavbarLinkExtendedTwo>
-          <NavbarLinkExtendedThree to="/projects">
-            Projects
+          <NavbarLinkExtendedTwo to="/about">
+            <DynamicAbout />
+          </NavbarLinkExtendedTwo>
+           <NavbarLinkExtendedThree to="/projects">
+            <DynamicProjects />
           </NavbarLinkExtendedThree>
-          <NavbarLinkExtendedFour to="/contact">Contact</NavbarLinkExtendedFour>
-          <NavbarLinkExtendedFive to="/">Français</NavbarLinkExtendedFive>
-          <NavbarLinkExtendedSix to="/home">English</NavbarLinkExtendedSix>
+          <NavbarLinkExtendedFour to="/contact">
+            <DynamicContact />
+          </NavbarLinkExtendedFour>
+          <NavbarLinkExtendedFive to="/">
+            <DynamicFrancais />
+          </NavbarLinkExtendedFive>
+          <NavbarLinkExtendedSix to="/home">
+            <DynamicEnglish />
+      </NavbarLinkExtendedSix>
         </NavbarExtendedContainer>
       )}
     </NavbarContainer>
